@@ -23,18 +23,20 @@ export default function Pedido(props){
     )
     
     function Decrementar(){
-        contador  == 0? Selecionado(): setContador (contador -1);
-    }
-
-    function Selecionado() {
-        if(contador >= 1){
-            setBorda("borda-verde");
-            setSelecionado("adicionar");
-        }
-        else{
+        if(contador === 1){
             setBorda("");
             setSelecionado("adicionar escondido");
             setContador(1);
+        }
+        else{
+            setContador (contador -1);
+        }
+    }
+
+    function Selecionado() {
+        if(borda == ""){
+            setBorda("borda-verde");
+            setSelecionado("adicionar");
         }
     };
 }
