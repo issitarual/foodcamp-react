@@ -44,8 +44,11 @@ body{
     overflow-x: scroll;
     margin-bottom: 27px;
 }
+::-webkit-scrollbar {
+    width: 0px;
+}
 .pratos:last-child{
-    margin-bottom: 0px;
+    margin-bottom: -20px;
 }
 .pratos>div{
     width: 172px;
