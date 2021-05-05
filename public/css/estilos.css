@@ -53,7 +53,7 @@ body{
     background-color: #fff;
     box-shadow: 0px 0px 10px -4px rgba(0, 0, 0, 0.25);
 }
-.pratos>div>p{
+.pratos>div p{
     font-family: 'Roboto', sans-serif;
     margin-top: 8px;
     text-align: justify;
@@ -67,9 +67,33 @@ body{
     font-size: 15px;
     color: #a6a6a6;   
 }
-.pratos>div>p:nth-child(4){
+.pratos>div span{
+    display: flex;
+    flex-direction: row;  
+    position: relative;  
+}
+.pratos>div>span>p{
     font-size: 16px;
-    color: #000;   
+    color: #000; 
+}
+.adicionar{
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.adicionar span{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.adicionar span:first-child{
+    color: red;
+}
+
+.adicionar span:last-child{
+    color: green;
 }
 
 .base{
@@ -105,6 +129,10 @@ body{
     border-style: inset;
     border: 4px solid #32B72F;
     padding: 14px 10px !important;
+}
+
+.escondido{
+    display: none;
 }
 
 /*font-family: 'Righteous', cursive;
