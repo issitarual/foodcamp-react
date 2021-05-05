@@ -14,16 +14,27 @@ export default function Pedido(props){
             <span>
                 <p>{valor}</p>
                 <div class={selecionado}>
-                    <span onClick={()=>setContador(contador -1)}>-</span>
+                    <span onClick={Decrementar}>-</span>
                     <span>{contador}</span>
-                    <span onClick={()=>setContador(contador +1)}>+</span>
+                    <span onClick={() => setContador(contador +1)}>+</span>
                 </div>
             </span>
         </div>
     )
+    
+    function Decrementar(){
+        contador  == 0? Selecionado(): setContador (contador -1);
+    }
 
     function Selecionado() {
-        setBorda("borda-verde")
-        setSelecionado("adicionar")
+        if(contador >= 1){
+            setBorda("borda-verde");
+            setSelecionado("adicionar");
+        }
+        else{
+            setBorda("");
+            setSelecionado("adicionar escondido");
+            setContador(1);
+        }
     };
 }
