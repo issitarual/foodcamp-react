@@ -44,6 +44,9 @@ body{
     overflow-x: scroll;
     margin-bottom: 27px;
 }
+.pratos:last-child{
+    margin-bottom: 0px;
+}
 .pratos>div{
     width: 172px;
     margin-top: 17px;
@@ -90,10 +93,12 @@ body{
 
 .adicionar span:first-child{
     color: red;
+    cursor: pointer;
 }
 
 .adicionar span:last-child{
     color: green;
+    cursor: pointer;
 }
 
 .base{
