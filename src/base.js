@@ -36,28 +36,29 @@ export default function Base(props){
 
     function Prato(){
         console.log(prato.map(n=> `${n.prato} (${n.quantidade}x)`));
-        let total = prato.map(n => parseInt(n.valor.replace(',','.')));
-        console.log(total.reduce((total, numero) => total + numero, 0))
     }
 
     function Bebida(){
         console.log(bebida.map(n=> `${n.prato} (${n.quantidade}x)`));
-        let total = bebida.map(n => parseInt(n.valor.replace(',','.')));
-        console.log(total.reduce((total, numero) => total + numero, 0))
     }
 
     function Sobremesa(){
         console.log(sobremesa.map(n=> `${n.prato} (${n.quantidade}x)`));
-        let total = sobremesa.map(n => parseInt(n.valor.replace(',','.')));
-        console.log(total.reduce((total, numero) => total + numero, 0))
     }
 
     function whatsapp(){
+        //preço total
+        let totalPrato = prato.map(n => parseInt(n.valor.replace(',','.'))).reduce((total, numero) => total + numero, 0);
+        let totalBebidas = bebida.map(n => parseInt(n.valor.replace(',','.'))).reduce((total, numero) => total + numero, 0);
+        let totalSobremesas = sobremesa.map(n => parseInt(n.valor.replace(',','.'))).reduce((total, numero) => total + numero, 0);
+        let total = (totalBebidas + totalPrato + totalSobremesas).toFixed(2);
+
+        //mensagem de whatsapp
         let texto_whatsapp_saudacao = "Olá, gostaria de fazer o pedido: ";
         let texto_whatsapp_prato = " \n - Prato: " + prato;
         let texto_whatsapp_bebida = " \n- Bebida: " + bebida;
         let texto_whatsapp_sobremesa = " \n- Sobremesa: " + sobremesa;
-        let texto_whatsapp_valor_total = " \nTotal: R$ " +  "xx.xx" + "0";
+        let texto_whatsapp_valor_total = " \nTotal: R$ " +  total;
         const texto_whatsapp = texto_whatsapp_saudacao  + texto_whatsapp_prato + texto_whatsapp_bebida + texto_whatsapp_sobremesa + texto_whatsapp_valor_total;
         let texto = encodeURI(texto_whatsapp);
         let site = "https://wa.me/5521969217949?text=" + texto;
