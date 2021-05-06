@@ -11,6 +11,7 @@ body{
     height: 92px;
     padding: 18px 21px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 2;
 }
 .topo p{
     color: #fff;    
@@ -74,6 +75,7 @@ body{
     display: flex;
     flex-direction: row;  
     position: relative;  
+    z-index: 0;
 }
 .pratos>div>span>p{
     font-size: 16px;
@@ -82,6 +84,7 @@ body{
 .adicionar{
     display: flex;
     position: absolute;
+    z-index: 0;
     right: 0;
     bottom: 0;
 }
