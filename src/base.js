@@ -1,39 +1,21 @@
 import React from 'react';
 
 export default function Base(props){
-    const [texto, setTexto] = React.useState("Selecione os 3 itens para fechar o pedido");
-    const [color, setColor] = React.useState('#CBCBCB');
-    React.useEffect(() => {document.querySelector(".base").children[0].style.backgroundColor = color;}, [color]);
-    const [estado, setEstado] = React.useState(false)
     const {prato, bebida, sobremesa} = props
 
     let retorno = OpcoesSelecionadas(prato, bebida, sobremesa);
 
-   /* if (estado === true){
-        setTexto("Fechar pedido");
-        setColor(color !== null?'#32B72F':'#CBCBCB')
-        return true;
-    } */
     Prato();
     Bebida();
     Sobremesa ();
     
     return(
         <div class="base">
-            <div onClick={FecharPedido}>
-                <p>{texto}</p>
+            <div onClick={retorno ? whatsapp : ""} className= {retorno ? "verde" : "cinza"}>
+                <p>{retorno ? "Fechar Pedido" : "Selecione 3 Itens para Continuar"}</p>
             </div>
         </div>
     )
-    
-
-    function FecharPedido(){
-        setTexto("Fechar pedido");
-        setColor(color !== null?'#32B72F':'#CBCBCB')
-        if(color == '#32B72F'){
-            whatsapp();
-        }
-    }
 
     function Prato(){
         let arrayPrato = prato.map(n=> `\n${n.prato} (${n.quantidade}x)`);
