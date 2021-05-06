@@ -10,9 +10,9 @@ export default function Base(props){
     Sobremesa ();
     
     return(
-        <div class="base">
-            <div onClick={retorno ? whatsapp : ""} className= {retorno ? "verde" : "cinza"}>
-                <p>{retorno ? "Fechar Pedido" : "Selecione 3 Itens para Continuar"}</p>
+        <div className ="base">
+            <div onClick={retorno ? whatsapp : ""} className = {retorno ? "verde" : "cinza"}>
+                <p>{retorno ? "Fechar Pedido" : "Selecione 3 itens para continuar"}</p>
             </div>
         </div>
     )

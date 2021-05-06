@@ -28,8 +28,8 @@ export default function Pedido(props){
     
     function Acrescentar(){
         setContador(contador +1)
-        funcEscolhido(escolhido.filter(n => n.prato !== prato));
-        funcEscolhido([...escolhido,{prato, valor, quantidade: contador + 1}])
+        let modificar = escolhido.filter(n => n.prato !== prato);
+        funcEscolhido([...modificar,{prato, valor, quantidade: contador + 1}])
     }
 
     function Decrementar(){
@@ -40,9 +40,9 @@ export default function Pedido(props){
             setContador(1);
         }
         else{
-            funcEscolhido(escolhido.filter(n => n.prato !== prato));
+            let modificar = escolhido.filter(n => n.prato !== prato);
             setContador (contador -1);
-            funcEscolhido([...escolhido,{prato, valor, quantidade: contador - 1}])
+            funcEscolhido([...modificar,{prato, valor, quantidade: contador - 1}])
         }
     }
 
@@ -52,6 +52,7 @@ export default function Pedido(props){
             setSelecionado("adicionar");
             funcEscolhido([...escolhido,{prato, valor, quantidade: contador}])
         }
+
     }
 
 
