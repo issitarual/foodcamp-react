@@ -6,6 +6,14 @@ export default function Base(props){
     React.useEffect(() => {document.querySelector(".base").children[0].style.backgroundColor = color;}, [color]);
     const [estado, setEstado] = React.useState(false)
     const {prato, bebida, sobremesa} = props
+
+    let retorno = OpcoesSelecionadas(prato, bebida, sobremesa);
+
+   /* if (estado === true){
+        setTexto("Fechar pedido");
+        setColor(color !== null?'#32B72F':'#CBCBCB')
+        return true;
+    } */
     Prato();
     Bebida();
     Sobremesa ();
@@ -17,13 +25,6 @@ export default function Base(props){
             </div>
         </div>
     )
-
-    function OpcoesSelecionadas(){
-        if(prato.length !== 0 && bebida.length !== 0 && sobremesa.length !== 0){
-            setTexto("Fechar pedido");
-            setColor(color !== null?'#32B72F':'#CBCBCB')
-        }
-    }
     
 
     function FecharPedido(){
@@ -77,4 +78,8 @@ export default function Base(props){
         
         window.location.href = site;
     }
+}
+
+function OpcoesSelecionadas(prato, bebida, sobremesa){
+    return (prato.length > 0 && bebida.length > 0 && sobremesa.length > 0)? true: false;
 }
