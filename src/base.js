@@ -6,7 +6,6 @@ export default function Base(props){
     React.useEffect(() => {document.querySelector(".base").children[0].style.backgroundColor = color;}, [color]);
     const [estado, setEstado] = React.useState(false)
     const {prato, bebida, sobremesa} = props
-    console.log(prato);
     Prato();
     Bebida();
     Sobremesa ();
@@ -21,10 +20,11 @@ export default function Base(props){
 
     function OpcoesSelecionadas(){
         if(prato.length !== 0 && bebida.length !== 0 && sobremesa.length !== 0){
-            setEstado(true);
+            setTexto("Fechar pedido");
+            setColor(color !== null?'#32B72F':'#CBCBCB')
         }
-
     }
+    
 
     function FecharPedido(){
         setTexto("Fechar pedido");
@@ -35,16 +35,25 @@ export default function Base(props){
     }
 
     function Prato(){
-        console.log(prato.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let arrayPrato = prato.map(n=> `\n${n.prato} (${n.quantidade}x)`);
+        arrayPrato.forEach(Retorno);
     }
 
     function Bebida(){
-        console.log(bebida.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let arrayBebida = bebida.map(n=> `\n${n.prato} (${n.quantidade}x)`);
+        arrayBebida.forEach(Retorno);
     }
 
     function Sobremesa(){
-        console.log(sobremesa.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let arraySobremesa= sobremesa.map(n=> `\n${n.prato} (${n.quantidade}x)`)
+        arraySobremesa.forEach(Retorno);
     }
+
+    function Retorno(item){
+        console.log(item);
+        return item;
+    }
+
 
     function whatsapp(){
         //preço total
@@ -53,15 +62,19 @@ export default function Base(props){
         let totalSobremesas = sobremesa.map(n => parseInt(n.valor.replace(',','.'))).reduce((total, numero) => total + numero, 0);
         let total = (totalBebidas + totalPrato + totalSobremesas).toFixed(2);
 
+        //
+        
         //mensagem de whatsapp
         let texto_whatsapp_saudacao = "Olá, gostaria de fazer o pedido: ";
-        let texto_whatsapp_prato = " \n - Prato: " + prato;
-        let texto_whatsapp_bebida = " \n- Bebida: " + bebida;
-        let texto_whatsapp_sobremesa = " \n- Sobremesa: " + sobremesa;
+        let texto_whatsapp_prato = " \n - Prato: "  ;
+        let texto_whatsapp_bebida = " \n- Bebida: " ;  
+        let texto_whatsapp_sobremesa = " \n- Sobremesa: " ;
         let texto_whatsapp_valor_total = " \nTotal: R$ " +  total;
         const texto_whatsapp = texto_whatsapp_saudacao  + texto_whatsapp_prato + texto_whatsapp_bebida + texto_whatsapp_sobremesa + texto_whatsapp_valor_total;
         let texto = encodeURI(texto_whatsapp);
         let site = "https://wa.me/5521969217949?text=" + texto;
+        
+        
         window.location.href = site;
     }
 }
