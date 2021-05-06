@@ -1,19 +1,21 @@
 import Pedido from './pedido';
 
-export default function Sobremesa (){
+export default function Sobremesa (props){
+    const {escolhido, funcEscolhido} = props;
+
     const sobremesa = [
         {prato: "Brownie",
         imagem: "./imagens/sobremesa-brownie.jpeg",
         descricao: "Escolha qual sabor será o topo do seu brownie!",
-        valor: "R$ 15,00"},
+        valor: "15,00"},
         {prato: "Bolo",
         imagem: "./imagens/sobremesa-bolo.jpg",
         descricao: "Bolo red velvet com recheio de cream cheese.",
-        valor: "R$ 20,00"},
+        valor: "20,00"},
         {prato: "Pudim",
         imagem: "./imagens/sobremesa-pudim.jpg",
         descricao: "Delicioso pudim de leite com frutas vermelhas.",
-        valor: "R$ 22,00"}];
+        valor: "22,00"}];
         
     return(
         <>
@@ -25,6 +27,8 @@ export default function Sobremesa (){
                         imagem = {n.imagem} 
                         descricao = {n.descricao} 
                         valor = {n.valor}
+                        escolhido = {escolhido}
+                        funcEscolhido = {funcEscolhido}
                     />)
                 } 
             </div>

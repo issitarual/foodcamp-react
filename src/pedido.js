@@ -1,10 +1,12 @@
 import React from 'react';
 
 export default function Pedido(props){
-    const { imagem, prato, descricao, valor} = props;
+
+    const { imagem, prato, descricao, valor, escolhido, funcEscolhido} = props;
     const [borda, setBorda] = React.useState(""); 
     const [selecionado, setSelecionado] = React.useState("adicionar escondido"); 
     const [contador, setContador] = React.useState(1); 
+    console.log(escolhido);
 
     return(
         <div class={borda} onClick={Selecionado}>
@@ -12,7 +14,7 @@ export default function Pedido(props){
             <p>{prato}</p>
             <p>{descricao}</p>
             <span>
-                <p>{valor}</p>
+                <p>R$ {valor}</p>
                 <div class={selecionado}>
                     <span onClick={Decrementar}>-</span>
                     <span>{contador}</span>
@@ -24,6 +26,7 @@ export default function Pedido(props){
     
     function Decrementar(){
         if(contador === 1){
+            funcEscolhido(escolhido.filter(n => n.prato !== prato));
             setBorda("");
             setSelecionado("adicionar escondido");
             setContador(1);
@@ -37,6 +40,7 @@ export default function Pedido(props){
         if(borda == ""){
             setBorda("borda-verde");
             setSelecionado("adicionar");
+            funcEscolhido([...escolhido,{prato, valor, quantidade: contador}])
         }
     };
 }
