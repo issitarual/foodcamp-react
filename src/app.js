@@ -11,14 +11,14 @@ export default function App(){
     return(
         <>
         <Topo/>
-        <Corpo 
+        <Corpo  
             prato = {pratoEscolhido}
             funcPrato = {setPratoEscolhido} 
             bebida = {bebidaEscolhida}
             funcBebida = {setBebidaEscolhida}
             sobremesa = {sobremesaEscolhida}
             funcSobremesa = {setSobremesaEscolhida}/>
-        <Base prato = {pratoEscolhido.length} bebida = {bebidaEscolhida.length} sobremesa = {sobremesaEscolhida.length}/>
+        <Base prato = {pratoEscolhido} bebida = {bebidaEscolhida} sobremesa = {sobremesaEscolhida}/>
         </>
     )
 }

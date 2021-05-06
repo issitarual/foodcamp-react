@@ -1,12 +1,12 @@
 import React from 'react';
+import Sobremesa from './sobremesa';
 
 export default function Pedido(props){
 
-    const { imagem, prato, descricao, valor, escolhido, funcEscolhido} = props;
+    const { imagem, prato, descricao, valor, escolhido, funcEscolhido } = props;
     const [borda, setBorda] = React.useState(""); 
     const [selecionado, setSelecionado] = React.useState("adicionar escondido"); 
     const [contador, setContador] = React.useState(1); 
-    console.log(escolhido);
 
     return(
         <div class={borda} onClick={Selecionado}>
@@ -42,5 +42,8 @@ export default function Pedido(props){
             setSelecionado("adicionar");
             funcEscolhido([...escolhido,{prato, valor, quantidade: contador}])
         }
-    };
+    }
+
+
 }
+
