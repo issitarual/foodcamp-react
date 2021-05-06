@@ -4,7 +4,13 @@ export default function Base(props){
     const [texto, setTexto] = React.useState("Selecione os 3 itens para fechar o pedido");
     const [color, setColor] = React.useState('#CBCBCB');
     React.useEffect(() => {document.querySelector(".base").children[0].style.backgroundColor = color;}, [color]);
+    const [estado, setEstado] = React.useState(false)
     const {prato, bebida, sobremesa} = props
+    console.log(prato);
+    Prato();
+    Bebida();
+    Sobremesa ();
+    
     return(
         <div class="base">
             <div onClick={FecharPedido}>
@@ -15,9 +21,9 @@ export default function Base(props){
 
     function OpcoesSelecionadas(){
         if(prato.length !== 0 && bebida.length !== 0 && sobremesa.length !== 0){
-            setTexto("Fechar pedido");
-            setColor(color !== null?'#32B72F':'#CBCBCB')
+            setEstado(true);
         }
+
     }
 
     function FecharPedido(){
@@ -26,6 +32,24 @@ export default function Base(props){
         if(color == '#32B72F'){
             whatsapp();
         }
+    }
+
+    function Prato(){
+        console.log(prato.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let total = prato.map(n => parseInt(n.valor.replace(',','.')));
+        console.log(total.reduce((total, numero) => total + numero, 0))
+    }
+
+    function Bebida(){
+        console.log(bebida.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let total = bebida.map(n => parseInt(n.valor.replace(',','.')));
+        console.log(total.reduce((total, numero) => total + numero, 0))
+    }
+
+    function Sobremesa(){
+        console.log(sobremesa.map(n=> `${n.prato} (${n.quantidade}x)`));
+        let total = sobremesa.map(n => parseInt(n.valor.replace(',','.')));
+        console.log(total.reduce((total, numero) => total + numero, 0))
     }
 
     function whatsapp(){
