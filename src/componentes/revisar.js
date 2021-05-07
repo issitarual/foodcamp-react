@@ -20,9 +20,9 @@ export default function Revisar(props){
             <div className = "corpo">
                 <p>Revise seu prato</p>
                 <div className="revisao">
-                        {arrayPratos.map((n,i)=><Total prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
-                         {arrayBebidas.map((n,i)=><Total prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
-                        {arraySobremesa.map((n,i)=><Total prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
+                        {arrayPratos.map((n,i)=><Total key = {i} prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
+                         {arrayBebidas.map((n,i)=><Total key = {i} prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
+                        {arraySobremesa.map((n,i)=><Total key = {i} prato = {n.prato} quantidade = {n.quantidade} valor = {n.valor}/>)}
                     
                     <div>
                         <span>TOTAL</span>
