@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+  } from "react-router-dom";
+  import Revisão from './revisão'
 
 
 export default function Base(props){
@@ -6,12 +13,22 @@ export default function Base(props){
 
     let retorno = OpcoesSelecionadas(prato, bebida, sobremesa);
     
-    return(        
-        <div className ="base">
-            <div onClick={retorno ? whatsapp : null} className = {retorno ? "verde" : "cinza"}>
-                <p>{retorno ? "Fechar Pedido" : "Selecione 3 itens para continuar"}</p>
+    return( 
+        <Router>     
+            <div className ="base">
+            <   Link onClick={e => retorno? null: e.preventDefault()} to="/revisão">                    
+                    <div onClick={retorno ? console.log(1) : null} className = {retorno ? "verde" : "cinza"}>
+                        <p>{retorno ? "Fechar Pedido" : "Selecione 3 itens para continuar"}</p>
+                    </div>
+                </Link>
+                <Switch>
+                    <Route path="/revisão">
+                        <Revisão />
+                    </Route>
+                </Switch>
             </div>
-        </div>
+        </Router>  
+
     )
 
     function whatsapp(){
