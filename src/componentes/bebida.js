@@ -20,8 +20,8 @@ export default function Bebida (props){
     return(
         <>
             <p>Agora, sua bebida</p>
-            <div class="pratos">
-                {bebida.map(n => 
+            <div className = "pratos">
+                {bebida.map((n, i) => 
                     <Pedido 
                         prato = {n.prato} 
                         imagem = {n.imagem} 
@@ -29,6 +29,7 @@ export default function Bebida (props){
                         valor = {n.valor}
                         escolhido = {escolhido}
                         funcEscolhido = {funcEscolhido}
+                        key = {i}
                     />)
                 } 
             </div>

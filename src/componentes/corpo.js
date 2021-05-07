@@ -6,7 +6,7 @@ export default function Corpo(props){
     const {sobremesa, funcSobremesa, bebida, funcBebida, prato, funcPrato, pratoQtd, bebidaQtd, sobremesaQtd} = props;
 
     return (
-            <div class = "corpo">
+            <div className = "corpo">
                 <Prato 
                     escolhido = { prato }
                     funcEscolhido = {funcPrato}

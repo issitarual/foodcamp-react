@@ -19,8 +19,8 @@ export default function Prato(props){
 return (    
     <>
             <p>Primeiro, seu prato</p>
-            <div class="pratos">
-                {principal.map(n => 
+            <div className = "pratos">
+                {principal.map((n, i) => 
                     <Pedido 
                         prato = {n.prato} 
                         imagem = {n.imagem} 
@@ -28,6 +28,7 @@ return (
                         valor = {n.valor}
                         escolhido = {escolhido}
                         funcEscolhido = {funcEscolhido}
+                        key = {i}
                     />)
                 }                
             </div>

@@ -20,8 +20,8 @@ export default function Sobremesa (props){
     return(
         <>
             <p>Por fim, sua sobremesa</p>
-            <div class="pratos">
-                {sobremesa.map(n => 
+            <div className = "pratos">
+                {sobremesa.map((n,i) => 
                     <Pedido 
                         prato = {n.prato} 
                         imagem = {n.imagem} 
@@ -29,6 +29,7 @@ export default function Sobremesa (props){
                         valor = {n.valor}
                         escolhido = {escolhido}
                         funcEscolhido = {funcEscolhido}
+                        key = {i}
                     />)
                 } 
             </div>
