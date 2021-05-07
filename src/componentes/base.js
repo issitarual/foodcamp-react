@@ -3,9 +3,11 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    useRouteMatch,
+    useParams
   } from "react-router-dom";
-  import Revisão from './revisão'
+  import Revisar from './revisar'
 
 
 export default function Base(props){
@@ -16,37 +18,30 @@ export default function Base(props){
     return( 
         <Router>     
             <div className ="base">
-            <   Link onClick={e => retorno? null: e.preventDefault()} to="/revisão">                    
-                    <div onClick={retorno ? console.log(1) : null} className = {retorno ? "verde" : "cinza"}>
+                <div className = {retorno ? "verde" : "cinza"}>
+                    <Link onClick={e => retorno? null: e.preventDefault()} to="/revisar">                    
                         <p>{retorno ? "Fechar Pedido" : "Selecione 3 itens para continuar"}</p>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
                 <Switch>
-                    <Route path="/revisão">
-                        <Revisão />
+                    <Route path="/revisar">
+                        <Revisar 
+                            arrayPratos = {prato}
+                            arrayBebidas = {bebida}
+                            arraySobremesa = {sobremesa}
+                            pratos = {prato.map(n=> `${n.prato} (${n.quantidade}x)\n`)} 
+                            bebidas = {bebida.map(n=> `${n.prato} (${n.quantidade}x)\n`) } 
+                            sobremesa = {sobremesa.map(n=> `${n.prato} (${n.quantidade}x)\n`)}
+                            total = {(prato.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0)
+                                + bebida.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0)
+                                +sobremesa.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0)).toFixed(2)}
+                        />
                     </Route>
                 </Switch>
             </div>
         </Router>  
 
     )
-
-    function whatsapp(){
-        //cálculo do preço total
-        const totalPrato = prato.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0);
-        const totalBebidas = bebida.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0);
-        const totalSobremesas = sobremesa.map(n => (parseInt(n.valor.replace(',','.')))*n.quantidade).reduce((total, numero) => total + numero, 0);
-        const total = (totalBebidas + totalPrato + totalSobremesas).toFixed(2);
-         
-        //mensagem de whatsapp
-        const mensagem = 
-            `Olá, gostaria de fazer o pedido: 
-            \n - Prato: + ${prato.map(n=> `${n.prato} (${n.quantidade}x)\n`)} 
-            \n- Bebida: + ${bebida.map(n=> `${n.prato} (${n.quantidade}x)\n`) } 
-            \n- Sobremesa: + ${sobremesa.map(n=> `${n.prato} (${n.quantidade}x)\n`)}
-            \nTotal: R$ +  ${total}`
-        window.location.href = "https://wa.me/5521969217949?text=" + encodeURI(mensagem); 
-    }
 }
 
 function OpcoesSelecionadas(prato, bebida, sobremesa){
